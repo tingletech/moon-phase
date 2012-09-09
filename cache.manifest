@@ -4,3 +4,7 @@ moon-phase.js
 index.html
 background.jpg
 https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png
+
+# http://stackoverflow.com/questions/4369033/cache-manifest-works-first-time-then-fails
+NETWORK:
+*
