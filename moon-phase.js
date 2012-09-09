@@ -47,24 +47,42 @@ function moon_day(today) {
 function phase_junk(phase) {
     var sweep = [];
     var mag;
+    // the "sweep-flag" and the direction of movement change every quarter moon
+    // zero and one are both new moon; 0.50 is full moon
     if (phase <= 0.25) {
         sweep = [ 1, 0 ];
         mag = 20 - 20 * phase * 4
-    } else 
-    if (phase <= 0.50) { 
+    } else if (phase <= 0.50) { 
         sweep = [ 0, 0 ];
         mag = 20 * (phase - 0.25) * 4
-    } else
-    if (phase <= 0.75) {
+    } else if (phase <= 0.75) {
         sweep = [ 1, 1 ];
         mag = 20 - 20 * (phase - 0.50) * 4
-    } else
-    if (phase <= 1) {
+    } else if (phase <= 1) {
         sweep = [ 0, 1 ];
         mag = 20 * (phase - 0.75) * 4
     } else { 
         exit; 
     }
+    var unicode_moon;
+    if (phase <= 0.0625 || phase > 0.9375) {
+        unicode_moon = "🌑";
+    } else if (phase <= 0.1875) {
+        unicode_moon = "🌒";
+    } else if (phase <= 0.3125) {
+        unicode_moon = "🌓";
+    } else if (phase <= 0.4375) {
+        unicode_moon = "🌔";
+    } else if (phase <= 0.5625) {
+        unicode_moon = "🌕";
+    } else if (phase <= 0.6875) {
+        unicode_moon = "🌖";
+    } else if (phase <= 0.8125) {
+        unicode_moon = "🌗";
+    } else if (phase <= 0.9375) {
+        unicode_moon = "🌘";
+    }
+    document.title = document.title + " " + unicode_moon;
     // http://www.w3.org/TR/SVG/paths.html#PathDataEllipticalArcCommands
     var d = "m100,0 ";
     d = d + "a" + mag + ",20 0 1," + sweep[0] + " 0,150 ";
