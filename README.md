@@ -2,7 +2,8 @@
 ==================
 
 This HTML page and javascript draw an `svg` picture of the moon that tries to match the current 
-actual phase of the moon.
+actual phase of the moon.  Also uses unicode emoji moons in the `<title>` element.  A new `svg` will
+be calculated every day; but there are only 8 emoji moons.
 
 Phase of the moon
 -----------------
@@ -10,6 +11,9 @@ Phase of the moon
 http://www.ben-daglish.net/moon.shtml
 http://www.ben-daglish.net/lunar/lunar.js
 "A little while ago the task of calculating lunar phases came to mind. After investigating the various algorithms out there, I collected together this little bunch, (mainly wrapped inside complete 'show all the phases for a year' programs), and hacked them about a bit to work nicely with Javascript . They are presented here for your edification, delight and ripping off."
+
+This javascript was modified into a function that is a number between 0 and 1 representing how 
+far through the lunar cycle we are.  0 and 1 are both new moons, 0.5 is the full moon.
 
 
 Background image of stars
@@ -37,6 +41,22 @@ SVG
 ---
 uses the `A` command in `<path>` http://www.w3.org/TR/SVG/paths.html#PathDataEllipticalArcCommands
 
+```svg
+<svg width="98%" height="98%" xmlns="http://www.w3.org/2000/svg" version="1.1">
+      <svg id="moon" viewBox="0 0 200 200">
+            <!-- black background of moon is path class="moonback" -->
+            <path class="moonback" d="m100,0 a20,20 0 1,1 0,150 a20,20 0 1,1 0,-150"></path>
+            <path class="moon" d="m100,0 a0.40078440694886197,20 0 1,1 0,150 a20,20 0 1,1 0,-150"></path>
+            <!--                             ^                       ^                  ^
+               this cycles between 0 and 20 -+                       |                  |
+                            4 times a month                          +------------------+
+                                                                     |
+                                                                     these arc-sweep options cycle
+                                                                     1,0 --  0,0 --  1,1 -- 0,0 
+            -->
+      </svg>
+</svg>
+```
 
 Logic notes
 ----------
