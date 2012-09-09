@@ -1,4 +1,23 @@
-License
+
+
+background.jpg file © StarFields [1] 1998 - 2012. All Rights Reserved.
+
+http://1-background.com/stars_1.htm
+http://1-background.com/images/stars-1/beautiful-blue-stars-fill.jpg
+
+All text and images © StarFields [1] 1998 - 2012. All Rights Reserved.
+You are very welcome to use my background images on your website
+or blog free of charge. All other uses, please contact me [2] for
+permission. Please do not hotlink the images, save them to your own
+computer first. Enjoy!
+
+[1] http://starfields.ws/
+[2] http://1-background.com/contact/
+
+[2012-09-08 bct]
+
+
+License for all other files
 -------
 Copyright © 2012, Regents of the University of California
 All rights reserved.
