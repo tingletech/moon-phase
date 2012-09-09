@@ -41,7 +41,7 @@ SVG
 ---
 uses the `A` command in `<path>` http://www.w3.org/TR/SVG/paths.html#PathDataEllipticalArcCommands
 
-```svg
+```xml
 <svg width="98%" height="98%" xmlns="http://www.w3.org/2000/svg" version="1.1">
       <svg id="moon" viewBox="0 0 200 200">
             <!-- black background of moon is path class="moonback" -->
