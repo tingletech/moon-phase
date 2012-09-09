@@ -8,18 +8,18 @@ be calculated every day; but there are only 8 emoji moons.
 Phase of the moon
 -----------------
 
-http://www.ben-daglish.net/moon.shtml
-http://www.ben-daglish.net/lunar/lunar.js
+ * http://www.ben-daglish.net/moon.shtml
+ * http://www.ben-daglish.net/lunar/lunar.js
 "A little while ago the task of calculating lunar phases came to mind. After investigating the various algorithms out there, I collected together this little bunch, (mainly wrapped inside complete 'show all the phases for a year' programs), and hacked them about a bit to work nicely with Javascript . They are presented here for your edification, delight and ripping off."
 
-This javascript was modified into a function that is a number between 0 and 1 representing how 
+This javascript was modified into a function that returns a number between 0 and 1 representing how 
 far through the lunar cycle we are.  0 and 1 are both new moons, 0.5 is the full moon.
 
 
 Background image of stars
 ----------------
 
-http://1-background.com/stars_1.htm
+ * http://1-background.com/stars_1.htm
 © StarFields [1] 1998 - 2012. All Rights Reserved.
 You are very welcome to use my background images on your website
 or blog free of charge. All other uses, please contact StarFields [2] for
