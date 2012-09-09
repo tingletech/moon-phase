@@ -96,7 +96,7 @@ function phase_junk(phase) {
     d = d + "a" + mag + ",20 0 1," + sweep[0] + " 0,150 ";
     d = d + "a20,20 0 1," + sweep[1] + " 0,-150";
     // http://www.i-programmer.info/programming/graphics-and-imaging/3254-svg-javascript-and-the-dom.html
-    xmlns = "http://www.w3.org/2000/svg";
+    var xmlns = "http://www.w3.org/2000/svg";
     var svg = document.getElementById("moon");
     var path = document.createElementNS(xmlns, 'path');
     var back = document.createElementNS(xmlns, 'path');
