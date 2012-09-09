@@ -2,7 +2,7 @@
 // http://jsfiddle.net/gkyYJ/
 // http://stackoverflow.com/users/965051/adeneo
 Date.prototype.getJulian = function() {
-    return Math.floor((this / 86400000) - (this.getTimezoneOffset() / 1440) + 2440587.5);
+    return ((this / 86400000) - (this.getTimezoneOffset() / 1440) + 2440587.5);
 };
 
 // http://www.ben-daglish.net/moon.shtml
