@@ -106,7 +106,6 @@ function phase_junk(phase) {
     path.setAttribute('d', d);
     svg.appendChild(back);
     svg.appendChild(path);
-    document.getElementsByTagName("body")[0].appendChild(svg);
 }
 
 phase_junk(moon_day(new Date()));
