@@ -4,65 +4,8 @@
 //
 
 //
-//	*** Main loop here ***
+//	*** Main loop removed ***
 //
-
-function Main(InForm) {
-	var OutString = "";
-	var calend;
-	var quady = new Array;
-	var sunp = new Array;
-	var moonp = new Array;
-	var y, m, day, glong, glat, tz, numday, mj, lst1, i;
-	var rads = 0.0174532925, sinmoonalt;
-	InForm.OutTable.value = "Calculating...";
-	//
-	// table header
-	//
-	HeadString = "             sun       c twi    n twi     a twi     moon\n" +
-	             "date        r    s   b    e    b    e    b    e     r    s\n" +
-	             "------------------------------------------------------------\n";
-	//
-	// key for bottom of table
-	//
-	KeyString = "\nKey\n.... means sun or moon below horizon all day or\n     twilight never begins\n" +
-                "**** means sun or moon above horizon all day\n     or twilight never ends\n" +
-	            "---- in rise column means no rise that day and\n" +
-	            "     in set column - no set that day\n";
-
-	//
-	// parse the form to make sure the numbers are numbers and not strings!
-	//
-	y = parseInt(InForm.Year.value, 10);
-	m = parseInt(InForm.Month.value, 10);
-	day = parseInt(InForm.Day.value, 10);
-	numday = parseInt(InForm.NumDays.value, 10);
-	glong = parseFloat(InForm.Glong.value);
-	glat = parseFloat(InForm.Glat.value);
-	tz = parseFloat(InForm.TimeZone.value);
-
-	//
-	//  print the table header to the text area
-	//
-	InForm.OutTable.value = HeadString;
-
-	//
-	// main loop. All the work is done in the functions with the long names
-	// find_sun_and_twi_events_for_date() and find_moonrise_set()
-	//
-	mj = mjd(day, m, y, 0.0);
-	for(i = 0; i < numday; i++) {
-		InForm.OutTable.value += caldat(mj + i) + " " +
-			find_sun_and_twi_events_for_date(mj + i, tz, glong, glat) + " " +
-			find_moonrise_set(mj + i, tz, glong, glat) + "\n";
-		}
-
-	//
-	// writes key to the bottom of the table.
-	//
-	InForm.OutTable.value += KeyString;
-
-	} // end of main program
 
 //
 //  *** Functions go here - mostly adapted from Montenbruck and Pfleger section 3.8 ***
@@ -475,9 +418,9 @@ function find_moonrise_set(mjd, tz, glong, glat) {
 	var yp, nz, rise, sett, hour, z1, z2, iobj, rads = 0.0174532925;
 	var quadout = new Array;
 	var sinho;
-	var   always_up = " ****";
-	var always_down = " ....";
-	var outstring = "";
+	var   always_up = "****";
+	var always_down = "....";
+	var out = [];
 
 	sinho = Math.sin(rads * 8/60);		//moonrise taken as centre of moon at +8 arcmin
 	sglat = Math.sin(rads * glat);
@@ -531,15 +474,15 @@ function find_moonrise_set(mjd, tz, glong, glat) {
 			} // end of while loop
 
 			if (rise == true || sett == true ) {
-				if (rise == true) outstring += " " + hrsmin(utrise);
-				else outstring += " ----";
-				if (sett == true) outstring += " " + hrsmin(utset);
-				else outstring += " ----";
+				if (rise == true) out[0] = hrsmin(utrise);
+				else out[0] = "----";
+				if (sett == true) out[1] = hrsmin(utset);
+				else out[1] = "----";
 				}
 			else {
-				if (above == true) outstring += always_up + always_up;
-				else outstring += always_down + always_down;
+				if (above == true) out = [ always_up, always_up ];
+				else out = [ always_down, always_down ];
 				}
 
-		return outstring;
+		return out;
 	}

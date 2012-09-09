@@ -7,7 +7,7 @@ be calculated every day; but there are only 8 emoji moons.
 
 Phase of the moon
 -----------------
-
+Ben Daglish
  * http://www.ben-daglish.net/moon.shtml
  * http://www.ben-daglish.net/lunar/lunar.js
 
@@ -15,6 +15,14 @@ Phase of the moon
 
 This javascript was modified into a function that returns a number between 0 and 1 representing how 
 far through the lunar cycle we are.  0 and 1 are both new moons, 0.5 is the full moon.
+
+Moon Rise and Moon Set
+-----------------
+Keith Burnett
+ * http://web.archive.org/web/20100409090517/http://bodmas.org/astronomy/riset.html
+
+This is a translation of a set of routines from Montenbruck and Pfleger's
+Astonomy on the Computer 2nd english ed - see chapter 3.8 the sunset progrm
 
 
 Background image of stars

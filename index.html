@@ -20,6 +20,10 @@
     <svg width="98%" height="98%" xmlns="http://www.w3.org/2000/svg" version="1.1">
       <svg id="moon" viewBox="0 0 200 200"/>
     </svg>
+    <div style="position: absolute; top:0; left: 0; background: white;">
+      <div>Moonrise <span id="moonrise"/></div>
+      <div>Moonset <span id="moonset"/></div>
+    </div>
 
     <a href="https://github.com/tingletech/moon-phase">
       <img style="position: absolute; top: 0; right: 0; border: 0;" 
@@ -28,4 +32,29 @@
     </a>
   </body>
   <script type="text/javascript" src="moon-phase.js" charset="UTF-8"></script>
+  <script type="text/javascript" src="riset.js" charset="UTF-8"></script>
+  <script type="text/javascript" charset="UTF-8">
+  var success = function(position) {
+    var lon = position.coords.longitude;
+    var lat = position.coords.latitude;
+    var today = today || new Date();
+    var year = today.getFullYear();
+    var day = today.getDate();
+    var month = today.getMonth()+1; // 0 index :(
+    var hours = today.getHours();
+    var tz = -today.getTimezoneOffset()/60;
+    console.log(day, month, year, hours);
+    var mj = mjd(day, month, year, 0.0);
+    console.log(mj, tz, lon, lat);
+    var riset = find_moonrise_set(mj, tz, lon, lat);
+    var moonrise = riset[0];
+    var moonset = riset[1];
+    document.getElementById('moonrise').innerHTML += moonrise;
+    document.getElementById('moonset').innerHTML += moonset;
+  };
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(success);
+  }
+  </script>
 </html>
