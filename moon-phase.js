@@ -66,23 +66,31 @@ function phase_junk(phase) {
     }
     var unicode_moon;
     if (phase <= 0.0625 || phase > 0.9375) {
-        unicode_moon = "🌑";
+        // unicode_moon = "🌑";
+        unicode_moon = "1F311";
     } else if (phase <= 0.1875) {
-        unicode_moon = "🌒";
+        // unicode_moon = "🌒";
+        unicode_moon = "1F312";
     } else if (phase <= 0.3125) {
-        unicode_moon = "🌓";
+        // unicode_moon = "🌓";
+        unicode_moon = "1F313";
     } else if (phase <= 0.4375) {
-        unicode_moon = "🌔";
+        // unicode_moon = "🌔";
+        unicode_moon = "1F314";
     } else if (phase <= 0.5625) {
-        unicode_moon = "🌕";
+        // unicode_moon = "🌕";
+        unicode_moon = "1F315";
     } else if (phase <= 0.6875) {
-        unicode_moon = "🌖";
+        // unicode_moon = "🌖";
+        unicode_moon = "1F316";
     } else if (phase <= 0.8125) {
-        unicode_moon = "🌗";
+        // unicode_moon = "🌗";
+        unicode_moon = "1F317";
     } else if (phase <= 0.9375) {
-        unicode_moon = "🌘";
+        // unicode_moon = "🌘";
+        unicode_moon = "1F318";
     }
-    document.title = document.title + " " + unicode_moon;
+    document.getElementsByTagName("title")[0].innerHTML = document.title + '  &#x' + unicode_moon + ";";
     // http://www.w3.org/TR/SVG/paths.html#PathDataEllipticalArcCommands
     var d = "m100,0 ";
     d = d + "a" + mag + ",20 0 1," + sweep[0] + " 0,150 ";
