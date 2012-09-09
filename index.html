@@ -1,4 +1,4 @@
-<html>
+<html manifest="cache.manifest">
   <head>
     <title>Moon Phase</title>
     <style>
@@ -11,8 +11,12 @@
       /* #moon { margin-top: 3em; } */
     </style>
     <meta charset="utf-8" />
+    <!-- http://matt.might.net/articles/how-to-native-iphone-ipad-apps-in-javascript/ -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="user-scalable=no, width=device-width" />
   </head>
-  <body>
+  <body ontouchmove="event.preventDefault()">
     <svg width="98%" height="98%" xmlns="http://www.w3.org/2000/svg" version="1.1">
       <svg id="moon" viewBox="0 0 200 200"/>
     </svg>
