@@ -15,6 +15,7 @@ http://www.ben-daglish.net/lunar/lunar.js
 Background image of stars
 ----------------
 
+http://1-background.com/stars_1.htm
 © StarFields [1] 1998 - 2012. All Rights Reserved.
 You are very welcome to use my background images on your website
 or blog free of charge. All other uses, please contact StarFields [2] for
