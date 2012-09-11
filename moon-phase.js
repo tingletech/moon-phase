@@ -66,31 +66,27 @@ function phase_junk(phase) {
     }
     var unicode_moon;
     if (phase <= 0.0625 || phase > 0.9375) {
-        // unicode_moon = "🌑";
-        unicode_moon = "1F311";
+        unicode_moon = "\uD83C\uDF11";
     } else if (phase <= 0.1875) {
-        // unicode_moon = "🌒";
-        unicode_moon = "1F312";
+        unicode_moon = "\uD83C\uDF12";
     } else if (phase <= 0.3125) {
-        // unicode_moon = "🌓";
-        unicode_moon = "1F313";
+        unicode_moon = "\uD83C\uDF13";
     } else if (phase <= 0.4375) {
-        // unicode_moon = "🌔";
-        unicode_moon = "1F314";
+        unicode_moon = "\uD83C\uDF14";
     } else if (phase <= 0.5625) {
-        // unicode_moon = "🌕";
-        unicode_moon = "1F315";
+        unicode_moon = "\uD83C\uDF15";
     } else if (phase <= 0.6875) {
-        // unicode_moon = "🌖";
-        unicode_moon = "1F316";
+        unicode_moon = "\uD83C\uDF16";
     } else if (phase <= 0.8125) {
-        // unicode_moon = "🌗";
-        unicode_moon = "1F317";
+        unicode_moon = "\uD83C\uDF17";
     } else if (phase <= 0.9375) {
-        // unicode_moon = "🌘";
-        unicode_moon = "1F318";
+        unicode_moon = "\uD83C\uDF18";
     }
-    document.getElementsByTagName("title")[0].innerHTML = document.title + '  &#x' + unicode_moon + ";";
+    // IE does not work with .innnerHTML'ing the title
+    // http://stackoverflow.com/questions/12114477/how-do-i-correctly-insert-unicode-in-an-html-title-using-javascript
+    // document.getElementsByTagName("title")[0].innerHTML = document.title + '  &#x' + unicode_moon + ";";
+    // http://stackoverflow.com/questions/3059166/does-string-fromcharcodedecimal-value-in-javascript-supports-extended-characte
+    document.title = document.title + " " + unicode_moon;
     // http://www.w3.org/TR/SVG/paths.html#PathDataEllipticalArcCommands
     var d = "m100,0 ";
     d = d + "a" + mag + ",20 0 1," + sweep[0] + " 0,150 ";
