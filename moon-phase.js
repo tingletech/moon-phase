@@ -87,21 +87,27 @@ function phase_junk(phase) {
     // document.getElementsByTagName("title")[0].innerHTML = document.title + '  &#x' + unicode_moon + ";";
     // http://stackoverflow.com/questions/3059166/does-string-fromcharcodedecimal-value-in-javascript-supports-extended-characte
     document.title = document.title + " " + unicode_moon;
-    // http://www.w3.org/TR/SVG/paths.html#PathDataEllipticalArcCommands
-    var d = "m100,0 ";
-    d = d + "a" + mag + ",20 0 1," + sweep[0] + " 0,150 ";
-    d = d + "a20,20 0 1," + sweep[1] + " 0,-150";
-    // http://www.i-programmer.info/programming/graphics-and-imaging/3254-svg-javascript-and-the-dom.html
-    var xmlns = "http://www.w3.org/2000/svg";
     var svg = document.getElementById("moon");
-    var path = document.createElementNS(xmlns, 'path');
-    var back = document.createElementNS(xmlns, 'path');
-    back.setAttribute('class', 'moonback');
-    back.setAttribute('d', "m100,0 a20,20 0 1,1 0,150 a20,20 0 1,1 0,-150");
-    path.setAttribute('class', 'moon');
-    path.setAttribute('d', d);
-    svg.appendChild(back);
-    svg.appendChild(path);
+    // http://stackoverflow.com/questions/654112/how-do-you-detect-support-for-vml-or-svg-in-a-browser/5493614#5493614
+    function supportsSVG() {
+      return !!document.createElementNS && !!document.createElementNS('http://www.w3.org/2000/svg', "svg").createSVGRect;
+    }
+    if (supportsSVG()) {  
+      // http://www.w3.org/TR/SVG/paths.html#PathDataEllipticalArcCommands
+      var d = "m100,0 ";
+      d = d + "a" + mag + ",20 0 1," + sweep[0] + " 0,150 ";
+      d = d + "a20,20 0 1," + sweep[1] + " 0,-150";
+      // http://www.i-programmer.info/programming/graphics-and-imaging/3254-svg-javascript-and-the-dom.html
+      var xmlns = "http://www.w3.org/2000/svg";
+      var path = document.createElementNS(xmlns, 'path');
+      var back = document.createElementNS(xmlns, 'path');
+      back.setAttribute('class', 'moonback');
+      back.setAttribute('d', "m100,0 a20,20 0 1,1 0,150 a20,20 0 1,1 0,-150");
+      path.setAttribute('class', 'moon');
+      path.setAttribute('d', d);
+      svg.appendChild(back);
+      svg.appendChild(path);
+    }
 }
 
 phase_junk(moon_day(new Date()));
