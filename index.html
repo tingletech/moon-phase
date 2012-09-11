@@ -20,20 +20,27 @@
     <svg width="98%" height="98%" xmlns="http://www.w3.org/2000/svg" version="1.1">
       <svg id="moon" viewBox="0 0 200 200"/>
     </svg>
-    <div style="position: absolute; top:0; left: 0; background: white;">
-      <div>Moonrise <span id="moonrise"/></div>
-      <div>Moonset <span id="moonset"/></div>
+    <div id="riseset" style="position: absolute; top:0; left: 0; background: white; visibility:hidden; ">
+<table>
+  <tr><td><span title="moonrise" id="moonrise"/></td><td title="moonrise">☽</td>
+      <td><span title="moonset" id="moonset"/></td><td title="moonset">☾</td></tr>
+  <tr><td><span title="sunrise" id="sunrise"/></td><td title="sunrise">☼</td>
+      <td><span title="sunset" id="sunset"></td><td title="sunset">☀</td></tr>
+  <tr><td colspan="2"><span id="date"/></td><td/><td><span id="zodiac"></td></tr>
+</table>
     </div>
 
     <a href="https://github.com/tingletech/moon-phase">
       <img style="position: absolute; top: 0; right: 0; border: 0;" 
            src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" 
-           alt="Fork me on GitHub">
+           alt="Fork me on GitHub" >
     </a>
   </body>
   <script type="text/javascript" src="moon-phase.js" charset="UTF-8"></script>
   <script type="text/javascript" src="riset.js" charset="UTF-8"></script>
+  <script type="text/javascript" src="zodiac.js" charset="UTF-8"></script>
   <script type="text/javascript" charset="UTF-8">
+  // this only get run if we can get a location ... should have a fallback if they don't have location.?
   var success = function(position) {
     var lon = position.coords.longitude;
     var lat = position.coords.latitude;
@@ -51,6 +58,15 @@
     var moonset = riset[1];
     document.getElementById('moonrise').innerHTML += moonrise;
     document.getElementById('moonset').innerHTML += moonset;
+    document.getElementById('riseset').style.visibility = 'visible';
+    var sunrs = find_sun_and_twi_events_for_date(mj, tz, lon, lat).split(" ");
+    var sunrise = sunrs[1];
+    var sunset = sunrs[2];
+    document.getElementById('sunrise').innerHTML += sunrise;
+    document.getElementById('sunset').innerHTML += sunset;
+    document.getElementById('date').innerHTML += year + "/" + month + "/" + day;
+    document.getElementById('zodiac').innerHTML += zodiac_sign(today);
+
   };
 
   if (navigator.geolocation) {

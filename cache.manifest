@@ -1,11 +1,12 @@
 CACHE MANIFEST
-# xx
-moon-phase.js?v=x
+# xxx
+moon-phase.js
 riset.js
+zodiac.js
 background.jpg
 https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png
-/?v
-index.html?vv=
+/
+index.html
 
 # http://stackoverflow.com/questions/4369033/cache-manifest-works-first-time-then-fails
 NETWORK:
