@@ -26,7 +26,7 @@
       <td><span title="moonset" id="moonset"/></td><td title="moonset">☾</td></tr>
   <tr><td><span title="sunrise" id="sunrise"/></td><td title="sunrise">☼</td>
       <td><span title="sunset" id="sunset"></td><td title="sunset">☀</td></tr>
-  <tr><td colspan="2"><span id="date"/></td><td/><td><span id="zodiac"></td></tr>
+  <tr><td colspan="2"><span id="date"/></td><td><span id="mooncent"/></td><td><span id="zodiac"></td></tr>
 </table>
     </div>
 
@@ -66,7 +66,7 @@
     document.getElementById('sunset').innerHTML += sunset;
     document.getElementById('date').innerHTML += year + "/" + month + "/" + day;
     document.getElementById('zodiac').innerHTML += zodiac_sign(today);
-
+    document.getElementById('mooncent').innerHTML += moon_day(today).toFixed(2)*100 + "%";
   };
 
   if (navigator.geolocation) {
