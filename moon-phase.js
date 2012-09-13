@@ -117,6 +117,8 @@ function phase_junk(phase) {
       back.setAttribute('d', "m100,0 a20,20 0 1,1 0,150 a20,20 0 1,1 0,-150");
       path.setAttribute('class', 'moon');
       path.setAttribute('d', d);
+      svg.setAttribute('height', window.screen.availHeight * 0.8);
+      svg.setAttribute('width', window.screen.availWidth * 0.8);
       svg.appendChild(back);
       svg.appendChild(path);
     } else if (supportsVML()) {
