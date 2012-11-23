@@ -13,34 +13,34 @@ function zodiac_sign(date) {
     }
 
    
-    mdd = (date.getMonth() + 1) + zeroFill( date.getDay() , 2);
-    console.log(mdd);
+    mdd = (date.getMonth() + 1) + zeroFill( date.getDate(), 2);
+    // console.log(mdd);
     if (mdd < 120) {
-        sign = "\u2650";
-    } else if (mdd < 218) {
         sign = "\u2651";
-    } else if (mdd < 320) {
+    } else if (mdd < 218) {
         sign = "\u2652";
-    } else if (mdd < 420) {
+    } else if (mdd < 320) {
         sign = "\u2653";
-    } else if (mdd < 521) {
+    } else if (mdd < 420) {
         sign = "\u2648";
-    } else if (mdd < 621) {
+    } else if (mdd < 521) {
         sign = "\u2649";
-    } else if (mdd < 722) {
+    } else if (mdd < 621) {
         sign = "\u264A";
-    } else if (mdd < 823) {
+    } else if (mdd < 722) {
         sign = "\u264B";
-    } else if (mdd < 923) {
+    } else if (mdd < 823) {
         sign = "\u264C";
-    } else if (mdd < 1023) {
+    } else if (mdd < 923) {
         sign = "\u264D";
-    } else if (mdd < 1122) {
+    } else if (mdd < 1023) {
         sign = "\u264E";
-    } else if (mdd < 1222) {
+    } else if (mdd < 1122) {
         sign = "\u264F";
-    } else if (mdd < 1231) {
+    } else if (mdd < 1222) {
         sign = "\u2650";
+    } else if (mdd < 1231) {
+        sign = "\u2651";
     }
     return sign;
 }
