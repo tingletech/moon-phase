@@ -51,9 +51,7 @@
     var month = today.getMonth()+1; // 0 index :(
     var hours = today.getHours();
     var tz = -today.getTimezoneOffset()/60;
-    console.log(day, month, year, hours);
     var mj = mjd(day, month, year, 0.0);
-    console.log(mj, tz, lon, lat);
     var riset = find_moonrise_set(mj, tz, lon, lat);
     var moonrise = riset[0];
     var moonset = riset[1];
