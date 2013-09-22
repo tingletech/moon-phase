@@ -20,8 +20,8 @@
     <meta name="viewport" content="width=device-width" / >
   </head>
   <body>
-    <svg id="moon" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" version="1.1"/>
-    <div id="riseset" style="position: absolute; top:0; left: 0; background: white; visibility:hidden; ">
+    <svg id="moon" style="position:absolute; left:10%; top:10%;" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" version="1.1"/>
+    <div id="riseset" style="position: absolute; bottom:0; left:0; background: white; visibility:hidden; ">
       <table>
         <tr><td><span title="moonrise" id="moonrise"/></td><td title="moonrise">☽</td>
             <td><span title="moonset" id="moonset"/></td><td title="moonset">☾</td></tr>
@@ -71,5 +71,18 @@
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(success);
   }
+  // http://tutorialzine.com/2010/03/centering-div-vertically-and-horizontally/
+  function center(){
+    moonelement=document.getElementById('moon')
+    moonelement.style.position='absolute';
+    moonelement.style.left=((document.body.clientWidth - moonelement.offsetWidth)/2);
+    moonelement.style.top=((window.innerHeight - moonelement.offsetHeight)/2);
+    console.log(document.body.clientWidth);
+    console.log(Math.max( window.innerHeight, document.body.clientHeight ));
+  }
+  window.onresize = function(){
+    center();
+  };
+  center();
   </script>
 </html>
