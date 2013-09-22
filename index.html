@@ -65,7 +65,7 @@
     document.getElementById('sunset').innerHTML += sunset;
     document.getElementById('date').innerHTML += year + "/" + month + "/" + day;
     document.getElementById('zodiac').innerHTML += zodiac_sign(today);
-    document.getElementById('mooncent').innerHTML += moon_day(today).toFixed(2)*100 + "%";
+    document.getElementById('mooncent').innerHTML += (moon_day(today)*100).toFixed(2) + "%";
   };
 
   if (navigator.geolocation) {
