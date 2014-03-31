@@ -88,6 +88,7 @@ function phase_junk(phase) {
     // http://stackoverflow.com/questions/3059166/does-string-fromcharcodedecimal-value-in-javascript-supports-extended-characte
     document.title = document.title + " " + unicode_moon;
     var svg = document.getElementById("moon");
+	if (svg != false && svg != null) {
     // http://stackoverflow.com/questions/654112/how-do-you-detect-support-for-vml-or-svg-in-a-browser/5493614#5493614
     // https://github.com/Modernizr/Modernizr/blob/master/modernizr.js
     function supportsSVG() {
@@ -126,6 +127,7 @@ function phase_junk(phase) {
       // http://stackoverflow.com/questions/7677145/calling-xslt-from-javascript
       // this will be IE almost always anyways, so could use IE specific xslt
     }
+	}
 }
 
 phase_junk(moon_day(new Date()));
