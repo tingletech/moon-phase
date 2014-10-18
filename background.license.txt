@@ -11,3 +11,49 @@ computer first. Enjoy!
 [2] http://1-background.com/contact/
 
 [2012-09-08 bct]
+
+September 9, 2012 3:10AM
+Re: [1-background.com] use of backgroud image
+
+Dear Brian,
+
+thank you for your permission request.
+
+You are very welcome to use my image and I'm delighted you have chosen it :-)
+
+Wishing you all the best,
+
+Silvia
+
+Silvia Hartmann
+Owner, 1-Background.com
+
+**** Google Book Project Live Starts Sept 12 ****
+http://silviahartmann.com/live/
+
+On 09/09/2012 02:32, tin... wrote:
+forename: Brian
+surname: Tingle
+from_email: tin...
+subject: use of backgroud image
+message: http://1-background.com/stars_1.htm
+http://1-background.com/images/stars-1/beautiful-blue-stars-fill.jpg
+
+I'm including this image in a github repository:
+
+http://tingletech.github.com/moon-phase/
+https://github.com/tingletech/moon-phase/blob/gh-pages/background.jpg
+
+I've attributed the image to you and included your copyright notice
+https://github.com/tingletech/moon-phase/blob/gh-pages/README.md#background-image-of-stars
+https://github.com/tingletech/moon-phase/blob/gh-pages/background.license.txt
+
+If this is my use is not consistent with "You are very welcome to use my background images on your website or blog free of charge. All other uses, please contact StarFields for permission."  If you find this be be an other use, I'd like to request permission for this use.  Thanks -- Brian
+from_country: United States
+how_us: google search
+Sender Computer: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/536.25 (KHTML, like Gecko) Version/6.0 Safari/536.25
+Sender IP: ...
+Sender Country Guess: United States
+Script Page: http://1-background.com/contact/
+
+
