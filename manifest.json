@@ -1,7 +1,7 @@
 {
   "name": "Moon Phase",
   "short_name": "Moon",
-  "start_url": "/",
+  "start_url": "/moon-phase/",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#000000",
