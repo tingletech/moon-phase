@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <radialGradient id="moonGrad" cx="35%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#F5F5DC"/>
+      <stop offset="100%" stop-color="#D6D5C0"/>
+    </radialGradient>
+    <radialGradient id="shadowGrad" cx="70%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="transparent"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0.85)"/>
+    </radialGradient>
+  </defs>
+  <circle cx="100" cy="100" r="80" fill="url(#moonGrad)"/>
+  <circle cx="130" cy="90" r="80" fill="url(#shadowGrad)"/>
+</svg>

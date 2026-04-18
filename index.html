@@ -1,88 +1,169 @@
 <!DOCTYPE html>
-<!-- http://dev.w3.org/html5/html-xhtml-author-guide/ -->
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" manifest="cache.manifest">
+<html lang="en">
   <head>
     <title>Moon Phase</title>
-    <style>
-      .moon { fill:#D6D5C0; }
-      .moonback { fill:black;stroke:#fff;stroke-width:1px; }
-      body { 
-        background-color:black;
-        background-image: url('background.jpg');
-        overflow: hidden;
-      }
-      /* #moon { margin-top: 3em; } */
-    </style>
     <meta charset="utf-8" />
-    <!-- http://matt.might.net/articles/how-to-native-iphone-ipad-apps-in-javascript/ -->
-    <!-- meta name="apple-mobile-web-app-capable" content="yes" / -->
-    <!-- meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" / -->
-    <meta name="viewport" content="width=device-width" / >
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" href="icon-192.png" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+        background-color: #000;
+        background-image: url('background.jpg');
+        background-size: cover;
+        background-position: center;
+        color: #fff;
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      }
+      #moon {
+        width: min(70vw, 70vh, 400px);
+        height: min(70vw, 70vh, 400px);
+      }
+      .moon { fill: #D6D5C0; }
+      .moonback { fill: #000; stroke: #fff; stroke-width: 1px; }
+      #riseset {
+        position: fixed;
+        bottom: env(safe-area-inset-bottom, 0);
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(255, 255, 255, 0.95);
+        color: #000;
+        border-radius: 12px 12px 0 0;
+        padding: 16px 20px;
+        margin-bottom: env(safe-area-inset-bottom, 0);
+        max-width: 95vw;
+        visibility: hidden;
+        box-shadow: 0 -2px 12px rgba(0,0,0,0.4);
+      }
+      #riseset table {
+        border-collapse: collapse;
+        margin: 0 auto;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+      #riseset td {
+        padding: 2px 8px;
+        text-align: center;
+        white-space: nowrap;
+      }
+      #riseset td:first-child { text-align: right; }
+      #riseset td:nth-child(3) { text-align: left; }
+      #riseset span[title] { font-size: 10px; color: #666; }
+      #install-banner {
+        position: fixed;
+        bottom: env(safe-area-inset-bottom, 16px);
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(255, 255, 255, 0.95);
+        color: #000;
+        border-radius: 12px;
+        padding: 12px 20px;
+        display: none;
+        align-items: center;
+        gap: 12px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+        font-size: 14px;
+        z-index: 100;
+        max-width: 90vw;
+      }
+      #install-banner.visible { display: flex; }
+      #install-banner button {
+        background: #000;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 8px 16px;
+        font-size: 14px;
+        cursor: pointer;
+        white-space: nowrap;
+      }
+      #install-banner button:hover { opacity: 0.85; }
+    </style>
   </head>
   <body>
-    <svg id="moon" style="position:absolute; left:10%; top:10%;" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" version="1.1"/>
-    <div id="riseset" style="position: absolute; bottom:0; left:0; background: white; visibility:hidden; ">
+    <svg id="moon" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" version="1.1"/>
+    <div id="riseset">
       <table>
-        <tr><td><span title="moonrise" id="moonrise"/></td><td title="moonrise">☽</td>
-            <td><span title="moonset" id="moonset"/></td><td title="moonset">☾</td></tr>
-        <tr><td><span title="sunrise" id="sunrise"/></td><td title="sunrise">☼</td>
-            <td><span title="sunset" id="sunset"></td><td title="sunset">☀</td></tr>
-        <tr><td colspan="2"><span style="font-size: small;" id="date"/></td><td><span id="mooncent"/></td><td><span id="zodiac"></td></tr>
+        <tr><td><span id="moonrise"/></td><td title="moonrise">&#x263D;</td>
+            <td><span id="moonset"/></td><td title="moonset">&#x263E;</td></tr>
+        <tr><td><span id="sunrise"/></td><td title="sunrise">&#x263C;</td>
+            <td><span id="sunset"/></td><td title="sun">&#x2600;</td></tr>
+        <tr><td colspan="2"><span id="date"/></td><td><span id="mooncent"/></td><td><span id="zodiac"></span></td></tr>
       </table>
     </div>
+    <div id="install-banner">
+      <span>Add Moon Phase to Home Screen</span>
+      <button id="install-btn">Add</button>
+      <button id="dismiss-btn" style="background:none;border:none;color:#999;font-size:18px;padding:4px 8px;cursor:pointer;">&times;</button>
+    </div>
+    <script type="text/javascript" src="moon-phase.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="riset.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="zodiac.js" charset="UTF-8"></script>
+    <script type="text/javascript" charset="UTF-8">
+    // Register service worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    }
 
-    <a href="https://github.com/tingletech/moon-phase" 
-      style="position: absolute; top: 0; right: 0; border: 0;" >
-      <img src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" 
-        alt="Fork me on GitHub" >
-    </a>
+    // Install banner
+    var deferredPrompt = null;
+    var installBanner = document.getElementById('install-banner');
+    var installBtn = document.getElementById('install-btn');
+
+    window.addEventListener('beforeinstallprompt', function(e) {
+      e.preventDefault();
+      deferredPrompt = e;
+      installBanner.classList.add('visible');
+    });
+
+    installBtn.addEventListener('click', function() {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(function(result) {
+          deferredPrompt = null;
+          installBanner.classList.remove('visible');
+        });
+      }
+    });
+
+    document.getElementById('dismiss-btn').addEventListener('click', function() {
+      hideInstallBanner();
+    });
+
+    var success = function(position) {
+      var lon = position.coords.longitude;
+      var lat = position.coords.latitude;
+      var today = new Date();
+      var year = today.getFullYear();
+      var day = today.getDate();
+      var month = today.getMonth() + 1;
+      var tz = -today.getTimezoneOffset() / 60;
+      var mj = mjd(day, month, year, 0.0);
+      var riset = find_moonrise_set(mj, tz, lon, lat);
+      document.getElementById('moonrise').innerHTML += riset[0];
+      document.getElementById('moonset').innerHTML += riset[1];
+      document.getElementById('riseset').style.visibility = 'visible';
+      var sunrs = find_sun_and_twi_events_for_date(mj, tz, lon, lat).split(' ');
+      document.getElementById('sunrise').innerHTML += sunrs[1];
+      document.getElementById('sunset').innerHTML += sunrs[2];
+      document.getElementById('date').innerHTML += year + '/' + month + '/' + day;
+      document.getElementById('zodiac').innerHTML += zodiac_sign(today);
+      document.getElementById('mooncent').innerHTML += (moon_day(today) * 100).toFixed(2) + '%';
+    };
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(success);
+    }
+    </script>
   </body>
-  <script type="text/javascript" src="moon-phase.js" charset="UTF-8"></script>
-  <script type="text/javascript" src="riset.js" charset="UTF-8"></script>
-  <script type="text/javascript" src="zodiac.js" charset="UTF-8"></script>
-  <script type="text/javascript" charset="UTF-8">
-  // this only get run if we can get a location ... should have a fallback if they don't have location.?
-  var success = function(position) {
-    var lon = position.coords.longitude;
-    var lat = position.coords.latitude;
-    var today = today || new Date();
-    var year = today.getFullYear();
-    var day = today.getDate();
-    var month = today.getMonth()+1; // 0 index :(
-    var hours = today.getHours();
-    var tz = -today.getTimezoneOffset()/60;
-    var mj = mjd(day, month, year, 0.0);
-    var riset = find_moonrise_set(mj, tz, lon, lat);
-    var moonrise = riset[0];
-    var moonset = riset[1];
-    document.getElementById('moonrise').innerHTML += moonrise;
-    document.getElementById('moonset').innerHTML += moonset;
-    document.getElementById('riseset').style.visibility = 'visible';
-    var sunrs = find_sun_and_twi_events_for_date(mj, tz, lon, lat).split(" ");
-    var sunrise = sunrs[1];
-    var sunset = sunrs[2];
-    document.getElementById('sunrise').innerHTML += sunrise;
-    document.getElementById('sunset').innerHTML += sunset;
-    document.getElementById('date').innerHTML += year + "/" + month + "/" + day;
-    document.getElementById('zodiac').innerHTML += zodiac_sign(today);
-    document.getElementById('mooncent').innerHTML += (moon_day(today)*100).toFixed(2) + "%";
-  };
-
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(success);
-  }
-  // http://tutorialzine.com/2010/03/centering-div-vertically-and-horizontally/
-  function center(){
-    moonelement=document.getElementById('moon')
-    moonelement.style.position='absolute';
-    moonelement.style.left=((document.body.clientWidth - moonelement.offsetWidth)/2);
-    moonelement.style.top=((window.innerHeight - moonelement.offsetHeight)/2);
-    console.log(document.body.clientWidth);
-    console.log(Math.max( window.innerHeight, document.body.clientHeight ));
-  }
-  window.onresize = function(){
-    center();
-  };
-  center();
-  </script>
 </html>
